@@ -1,7 +1,10 @@
+package config;
+
 import java.io.IOException;
 import java.util.Properties;
 
 public class TestProperties {
+
     public static String getValue(String propertyName) {
         Properties properties = new Properties();
         try {

@@ -1,17 +1,14 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.util.concurrent.TimeUnit;
+import steps.StepForTest;
 
 public class BrowserTest {
 
-    private String url = TestProperties.getValue("test.url");
     private WebDriver driver;
 
     @AfterEach
@@ -25,7 +22,7 @@ public class BrowserTest {
 
         driver = new ChromeDriver();
 
-        generalStep();
+        StepForTest.openWebPageWithWait(driver);
     }
 
     @Test
@@ -34,7 +31,7 @@ public class BrowserTest {
 
         driver = new FirefoxDriver();
 
-        generalStep();
+        StepForTest.openWebPageWithWait(driver);
     }
 
     @Test
@@ -43,12 +40,6 @@ public class BrowserTest {
 
         driver = new EdgeDriver();
 
-        generalStep();
-    }
-
-    @Step
-    public void generalStep() {
-        driver.get(url);
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        StepForTest.openWebPageWithWait(driver);
     }
 }
